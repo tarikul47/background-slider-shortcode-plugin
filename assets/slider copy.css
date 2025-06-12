@@ -1,0 +1,99 @@
+/* Main container for the entire slider */
+.bis-slider-container {
+    position: relative; /* Crucial for absolute positioning of children */
+    overflow: hidden;
+    /* height will be set by shortcode attribute, e.g., height: 500px; */
+    width: 100%;
+}
+
+/* Container for all background slides */
+.bis-background-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Keep background behind content */
+}
+
+/* Individual background slide */
+.bis-bg-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* For fade transition */
+    /* If you want a slide transition, you'd adjust transform/left properties here */
+}
+
+.bis-bg-slide.active {
+    opacity: 1;
+}
+
+/* Fixed content overlay */
+.bis-fixed-content {
+    position: absolute; /* Positions content relative to .bis-slider-container */
+    bottom: 50px; /* Adjust as needed */
+    left: 50px;  /* Adjust as needed */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Adds readability */
+    z-index: 1; /* Ensures content is on top of backgrounds */
+    padding-right: 50px; /* Prevents text from hitting the right edge */
+    max-width: 80%; /* Limits width for better readability */
+}
+
+.bis-fixed-content h2 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+}
+
+.bis-fixed-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.bis-btn {
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    color: #000;
+    padding: 12px 25px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.bis-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bis-fixed-content {
+        left: 20px;
+        bottom: 30px;
+        max-width: calc(100% - 40px);
+        padding-right: 0;
+    }
+    .bis-fixed-content h2 {
+        font-size: 2em;
+    }
+    .bis-fixed-content p {
+        font-size: 1em;
+    }
+    .bis-btn {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bis-fixed-content h2 {
+        font-size: 1.5em;
+    }
+    .bis-fixed-content p {
+        font-size: 0.9em;
+    }
+}
