@@ -3,7 +3,7 @@
  * Plugin Name: Background Image Slider
  * Description: A simple background slider with overlay text and button.
  * Version: 1.0
- * Author: Your Name
+ * Author: Tarikul Islam
  */
 
 defined('ABSPATH') || exit;
@@ -40,12 +40,13 @@ function bis_slider_shortcode($atts, $content = null) {
     }
     $output .= '</div>'; // close .bis-background-slides
 
-    // Add the overlay div
-    $output .= '<div class="bis-overlay"></div>';
-
     // --- Conditional Rendering for Fixed Content ---
     // Check if any of the content fields (title, desc, button) are provided
     if (!empty($atts['title']) || !empty($atts['desc']) || !empty($atts['button_text'])) {
+        
+        // Add the overlay div
+        $output .= '<div class="bis-overlay"></div>';
+        
         $output .= '<div class="bis-fixed-content">';
 
         // Only display title if provided
